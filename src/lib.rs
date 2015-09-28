@@ -5,6 +5,7 @@
 //!
 //! ```rust
 //! #[macro_use] extern crate const_cstr;
+//! // Just for the `libc::c_char` type alias.
 //! extern crate libc;
 //!     
 //! use std::ffi::CStr;
