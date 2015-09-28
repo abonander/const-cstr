@@ -1,4 +1,4 @@
-# `const-cstr` [![](https://img.shields.io/crates/v/const-cstr.svg)](crates.io/crates/const-cstr)
+# `const-cstr` [![](https://img.shields.io/crates/v/const-cstr.svg)](https://crates.io/crates/const-cstr)
 Create static C-compatible strings from Rust string literals.
 
 Usage
