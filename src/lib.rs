@@ -54,7 +54,6 @@
 extern crate libc;
 
 use std::ffi::CStr;
-use std::mem;
 
 /// A type representing a static C-compatible string, wrapping `&'static str`.
 ///
@@ -124,7 +123,7 @@ impl ConstCStr {
         // This check is safe because of the above assert.
         // Interior nuls are more of a logic error than a memory saftey issue.
         unsafe {
-            Cstr::from_bytes_with_nul_unchecked(bytes)
+            CStr::from_bytes_with_nul_unchecked(bytes)
         }
     }
 }
