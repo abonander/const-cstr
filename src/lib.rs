@@ -121,8 +121,10 @@ impl ConstCStr {
 
         assert_eq!(bytes[bytes.len() - 1], b'\0');
 
+        // This check is safe because of the above assert.
+        // Interior nuls are more of a logic error than a memory saftey issue.
         unsafe {
-            mem::transmute(bytes)
+            Cstr::from_bytes_with_nul_unchecked(bytes)
         }
     }
 }
