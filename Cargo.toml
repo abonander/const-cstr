@@ -1,7 +1,10 @@
 [package]
 name = "const-cstr"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Austin Bonander <austin.bonander@gmail.com>"]
+description = "Create static C-compatible strings from Rust string literals."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/cybergeek94/const-cstr"
 
 [dependencies]
 libc = "0.1"
