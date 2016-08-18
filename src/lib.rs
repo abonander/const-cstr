@@ -13,9 +13,8 @@
 //!
 //! ```rust
 //! #[macro_use] extern crate const_cstr;
-//! // Just for the `libc::c_char` type alias.
-//! extern crate libc;
-//!     
+//!
+//! use std::os::raw::c_char;
 //! use std::ffi::CStr;
 //!
 //! const_cstr! {
@@ -30,7 +29,7 @@
 //! }
 //!
 //! // Imagine this is an `extern "C"` function linked from some other lib.
-//! unsafe fn print_c_string(cstr: *const libc::c_char) {
+//! unsafe fn print_c_string(cstr: *const c_char) {
 //!     println!("{}", CStr::from_ptr(cstr).to_str().unwrap());
 //! }
 //!
@@ -51,8 +50,8 @@
 //! Hello, world!
 //! Goodnight, sun!
 //! ```
-extern crate libc;
 
+use std::os::raw::c_char;
 use std::ffi::CStr;
 
 /// A type representing a static C-compatible string, wrapping `&'static str`.
@@ -100,12 +99,12 @@ impl ConstCStr {
     /// ------
     /// If the wrapped string is not NUL-terminated. 
     /// (Unlikely if you used the `const_cstr!` macro. This is just a sanity check.)
-    pub fn as_ptr(&self) -> *const libc::c_char {
+    pub fn as_ptr(&self) -> *const c_char {
         let bytes = self.val.as_bytes();
 
         assert_eq!(bytes[bytes.len() - 1], b'\0');
 
-        self.val.as_bytes().as_ptr() as *const libc::c_char
+        self.val.as_bytes().as_ptr() as *const c_char
     }
 
     /// Returns the wrapped string as an `&'static CStr`, skipping the length check that
