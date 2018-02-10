@@ -6,5 +6,3 @@ description = "Create static C-compatible strings from Rust string literals."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/cybergeek94/const-cstr"
 
-[dependencies]
-libc = "0.1"

@@ -18,9 +18,8 @@ Example
 -------
 ```rust
  #[macro_use] extern crate const_cstr;
- // Just for the `libc::c_char` type alias.
- extern crate libc;
-     
+
+ use std::os::raw::c_char;
  use std::ffi::CStr;
 
  const_cstr! {
@@ -35,7 +34,7 @@ Example
  }
 
  // Imagine this is an `extern "C"` function linked from some other lib.
- unsafe fn print_c_string(cstr: *const libc::c_char) {
+ unsafe fn print_c_string(cstr: *const c_char) {
      println!("{}", CStr::from_ptr(cstr).to_str().unwrap());
  }
 
